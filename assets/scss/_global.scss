@@ -1,18 +1,18 @@
 /*======================== Google Fonts =========================*/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 /*======================== Variables ============================*/
 
 /*=================== Breakpoints ===================*/
-$breakpoints:(
-  'medium': 35rem,
-  'large': 57rem
+$breakpoints: (
+  "medium": 35rem,
+  "large": 57rem,
 );
 
 /*=================== Mixins ==================*/
-@mixin mq($breakpoint){
-  @if map-has-key($breakpoints, $breakpoint){
-    @media (min-width: map-get($breakpoints, $breakpoint)){
+@mixin mq($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
       @content;
     }
   }
@@ -30,69 +30,101 @@ $white: #fff;
 $font-regular: 400;
 $font-bold: 700;
 
-$h2-font-size: 1.75rem;
-$normal-font-size: .938rem;
-$small-font-size: .813rem;
+$h2-font-size: 2rem;
+$normal-font-size: 0.938rem;
+$small-font-size: 0.813rem;
 
-$body-font: 'Roboto', sans-serif;
+$body-font: "Roboto", sans-serif;
 
 /*================== Base =====================*/
 
 *,
 ::after,
-::before{
+::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: $body-font;
   min-height: 100vh;
   background: $secondary-light;
 }
 
-h2{
+h2 {
   font-size: $h2-font-size;
   font-weight: $font-bold;
 }
 
-button{
+button {
   font-family: inherit;
   font-size: $normal-font-size;
 }
 
 /*================== Calculator ==================*/
 
-.calculator{
+.calculator {
   background: $primary-dark;
   overflow: hidden;
 
-  &__input{
+  &__input {
     color: $white;
     font-size: $h2-font-size;
     padding-inline: 1rem;
   }
 
-  &__buttons{
-
-    button{
+  &__buttons {
+    button {
       background: $primary;
       color: $white;
       border: none;
+      transition: background 0.3s ease-out;
+
+      &:hover {
+        background: lighten($primary, 7);
+        cursor: pointer;
+      }
+
+      &:active {
+        background: lighten($primary, 14);
+      }
     }
 
-    #btn-clear{
+    #btn-clear,
+    #btn-delete {
+      grid-column: span 2;
+    }
+
+    #btn-clear {
       background: $alt;
-      grid-column: span 2;
+
+      &:hover {
+        background: darken($alt, 10);
+      }
+
+      &:active {
+        background: darken($alt, 25);
+      }
     }
 
-    #btn-delete{
+    #btn-delete {
       background: $secondary;
-      grid-column: span 2;
 
+      &:hover {
+        background: darken($secondary, 20);
+      }
+
+      &:active {
+        background: darken($secondary, 30);
+      }
+    }
+  }
+
+  @include mq('medium'){
+
+    &__input{
+      font-size: 3rem;
     }
   }
 }
-
-
