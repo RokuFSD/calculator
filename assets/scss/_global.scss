@@ -1,0 +1,98 @@
+/*======================== Google Fonts =========================*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/*======================== Variables ============================*/
+
+/*=================== Breakpoints ===================*/
+$breakpoints:(
+  'medium': 35rem,
+  'large': 57rem
+);
+
+/*=================== Mixins ==================*/
+@mixin mq($breakpoint){
+  @if map-has-key($breakpoints, $breakpoint){
+    @media (min-width: map-get($breakpoints, $breakpoint)){
+      @content;
+    }
+  }
+}
+
+/*=================== Colors ====================*/
+$primary: #3d5a80;
+$primary-dark: #293241;
+$secondary: #98c1d9;
+$secondary-light: #e0fbfc;
+$alt: #ee6c4d;
+$white: #fff;
+
+/*=================== Fonts and Typography =========================*/
+$font-regular: 400;
+$font-bold: 700;
+
+$h2-font-size: 1.75rem;
+$normal-font-size: .938rem;
+$small-font-size: .813rem;
+
+$body-font: 'Roboto', sans-serif;
+
+/*================== Base =====================*/
+
+*,
+::after,
+::before{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: $body-font;
+  min-height: 100vh;
+  background: $secondary-light;
+}
+
+h2{
+  font-size: $h2-font-size;
+  font-weight: $font-bold;
+}
+
+button{
+  font-family: inherit;
+  font-size: $normal-font-size;
+}
+
+/*================== Calculator ==================*/
+
+.calculator{
+  background: $primary-dark;
+  overflow: hidden;
+
+  &__input{
+    color: $white;
+    font-size: $h2-font-size;
+    padding-inline: 1rem;
+  }
+
+  &__buttons{
+
+    button{
+      background: $primary;
+      color: $white;
+      border: none;
+    }
+
+    #btn-clear{
+      background: $alt;
+      grid-column: span 2;
+    }
+
+    #btn-delete{
+      background: $secondary;
+      grid-column: span 2;
+
+    }
+  }
+}
+
+

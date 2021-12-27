@@ -1,0 +1,89 @@
+/*======================== Google Fonts =========================*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+/*======================== Variables ============================*/
+/*=================== Breakpoints ===================*/
+/*=================== Mixins ==================*/
+/*=================== Colors ====================*/
+/*=================== Fonts and Typography =========================*/
+/*================== Base =====================*/
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  background: #e0fbfc;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+button {
+  font-family: inherit;
+  font-size: 0.938rem;
+}
+
+/*================== Calculator ==================*/
+.calculator {
+  background: #293241;
+  overflow: hidden;
+}
+.calculator__input {
+  color: #fff;
+  font-size: 1.75rem;
+  padding-inline: 1rem;
+}
+.calculator__buttons button {
+  background: #3d5a80;
+  color: #fff;
+  border: none;
+}
+.calculator__buttons #btn-clear {
+  background: #ee6c4d;
+  grid-column: span 2;
+}
+.calculator__buttons #btn-delete {
+  background: #98c1d9;
+  grid-column: span 2;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  display: grid;
+  min-height: 100vh;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1fr;
+}
+@media (min-width: 35rem) {
+  .calculator {
+    min-height: 40rem;
+    width: 30rem;
+  }
+}
+
+.calculator__input {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.calculator__buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,32 @@
+@use 'global' as g;
+
+.container{
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator{
+  display: grid;
+  min-height: 100vh;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: .5fr 1fr;
+
+  @include g.mq('medium'){
+    min-height: 40rem;
+    width: 30rem;
+  }
+}
+
+.calculator__input{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.calculator__buttons{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
