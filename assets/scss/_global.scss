@@ -69,9 +69,16 @@ button {
   overflow: hidden;
 
   &__input {
+    position:relative;
     color: $white;
     font-size: $h2-font-size;
     padding-inline: 1rem;
+
+    .input__previous{
+      font-size: $normal-font-size;
+      position: absolute;
+      top: 2rem;
+    }
   }
 
   &__buttons {

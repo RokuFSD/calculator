@@ -1,18 +1,25 @@
 class Calculator{
+
   constructor(){
-    this._accumulator = 0; 
+    this._currentNumber = 0; 
+    this._previousNumber = 0;
+    this._result = 0;
+    this._operator = "";
   }
 
-  add(value){
-    this._accumulator += + value;
+  add(){
+    this._result = this._currentNumber + this._previousNumber; 
   }
 
-  multiply(value){
-    this._accumulator *= value;
+  multiply(){
+    this._result = this._previousNumber * this._currentNumber;
   }
 
-  get actualValue(){
-    return this._accumulator;
+  substraction(){
+    this._result = this._previousNumber - this._currentNumber;
   }
 
+  division(){
+    this._result = this._previousNumber / this._currentNumber;
+  }
 }

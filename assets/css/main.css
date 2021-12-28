@@ -36,9 +36,15 @@ button {
   overflow: hidden;
 }
 .calculator__input {
+  position: relative;
   color: #fff;
   font-size: 2rem;
   padding-inline: 1rem;
+}
+.calculator__input .input__previous {
+  font-size: 0.938rem;
+  position: absolute;
+  top: 2rem;
 }
 .calculator__buttons button {
   background: #3d5a80;
