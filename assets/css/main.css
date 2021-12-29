@@ -52,9 +52,11 @@ button {
   border: none;
   transition: background 0.3s ease-out;
 }
-.calculator__buttons button:hover {
-  background: #496b98;
-  cursor: pointer;
+@media (hover: hover) {
+  .calculator__buttons button:hover {
+    background: #496b98;
+    cursor: pointer;
+  }
 }
 .calculator__buttons button:active {
   background: #567cae;
@@ -66,8 +68,10 @@ button {
 .calculator__buttons #btn-clear {
   background: #ee6c4d;
 }
-.calculator__buttons #btn-clear:hover {
-  background: #ea461e;
+@media (hover: hover) {
+  .calculator__buttons #btn-clear:hover {
+    background: #ea461e;
+  }
 }
 .calculator__buttons #btn-clear:active {
   background: #ab2e10;
@@ -75,8 +79,10 @@ button {
 .calculator__buttons #btn-delete {
   background: #98c1d9;
 }
-.calculator__buttons #btn-delete:hover {
-  background: #4d94be;
+@media (hover: hover) {
+  .calculator__buttons #btn-delete:hover {
+    background: #4d94be;
+  }
 }
 .calculator__buttons #btn-delete:active {
   background: #3a799e;

@@ -69,12 +69,12 @@ button {
   overflow: hidden;
 
   &__input {
-    position:relative;
+    position: relative;
     color: $white;
     font-size: $h2-font-size;
     padding-inline: 1rem;
 
-    .input__previous{
+    .input__previous {
       font-size: $normal-font-size;
       position: absolute;
       top: 2rem;
@@ -88,9 +88,11 @@ button {
       border: none;
       transition: background 0.3s ease-out;
 
-      &:hover {
-        background: lighten($primary, 7);
-        cursor: pointer;
+      @media (hover: hover) {
+        &:hover {
+          background: lighten($primary, 7);
+          cursor: pointer;
+        }
       }
 
       &:active {
@@ -106,8 +108,10 @@ button {
     #btn-clear {
       background: $alt;
 
-      &:hover {
-        background: darken($alt, 10);
+      @media (hover: hover) {
+        &:hover {
+          background: darken($alt, 10);
+        }
       }
 
       &:active {
@@ -118,8 +122,10 @@ button {
     #btn-delete {
       background: $secondary;
 
-      &:hover {
-        background: darken($secondary, 20);
+      @media (hover: hover) {
+        &:hover {
+          background: darken($secondary, 20);
+        }
       }
 
       &:active {
@@ -128,9 +134,8 @@ button {
     }
   }
 
-  @include mq('medium'){
-
-    &__input{
+  @include mq("medium") {
+    &__input {
       font-size: 3rem;
     }
   }
