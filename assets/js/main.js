@@ -2,16 +2,22 @@ const calculator = new Calculator();
 const buttons = document.querySelector(".calculator__buttons");
 const display = document.querySelector(".input__actual");
 const previous = document.querySelector(".input__previous");
+const buttonClear = document.querySelector("#btn-clear");
+const buttonDelete = document.querySelector("#btn-delete");
 
 let currentNumber = "";
 let previousNumber = "";
 
 const updateDisplay = () => {
-  display.innerHTML = currentNumber;
+  if (currentNumber) {
+    display.innerHTML = currentNumber;
+  } else {
+    display.innerHTML = "0";
+  }
 };
 
-const updatePrevious = (operator) => {
-  previous.innerHTML = previousNumber + " " + operator;
+const updatePrevious = () => {
+  previous.innerHTML = previousNumber;
 };
 
 const numberPulsed = (number) => {
@@ -20,9 +26,9 @@ const numberPulsed = (number) => {
   updateDisplay();
 };
 
-const resolve = ()  => {
+const resolve = () => {
   switch (calculator._operator) {
-    case "+": 
+    case "+":
       calculator.add();
       break;
     case "-":
@@ -38,22 +44,20 @@ const resolve = ()  => {
 
   currentNumber = calculator._result;
   updateDisplay();
-}
-
+};
 
 const operatorPulsed = (operator) => {
-  if(currentNumber == "") return
+  if (currentNumber == "") return;
 
-  if(previousNumber !== ""){
+  if (previousNumber !== "") {
     resolve();
   }
-
   calculator._operator = operator;
   previousNumber = currentNumber;
   calculator._previousNumber = Number(previousNumber);
   currentNumber = "";
   calculator._currentNumber = 0;
-  updatePrevious(operator);
+  updatePrevious();
   console.log(calculator);
 };
 
@@ -62,8 +66,24 @@ const getInput = (value) => {
 };
 
 buttons.addEventListener("click", (e) => {
-  if (e.target && e.target.tagName == "BUTTON") {
+  if (e.target && e.target.hasAttribute("value")) {
     getInput(e.target.value);
   }
 });
 
+const clear = () => {
+  previousNumber = "";
+  currentNumber = "";
+  updateDisplay();
+  updatePrevious();
+};
+
+const removeLast = () => {
+  if (currentNumber) {
+    currentNumber = currentNumber.slice(0, -1);
+  }
+  updateDisplay();
+};
+
+buttonClear.addEventListener("click", clear);
+buttonDelete.addEventListener("click", removeLast);
