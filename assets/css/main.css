@@ -30,6 +30,11 @@ button {
   font-size: 0.938rem;
 }
 
+footer {
+  text-align: center;
+  padding: 2rem 0;
+}
+
 /*================== Calculator ==================*/
 .calculator {
   background: #293241;
@@ -95,7 +100,7 @@ button {
 
 .container {
   display: flex;
-  min-height: 100vh;
+  min-height: 90vh;
   justify-content: center;
   align-items: center;
 }

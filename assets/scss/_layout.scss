@@ -2,7 +2,7 @@
 
 .container{
   display: flex;
-  min-height: 100vh;
+  min-height: 90vh;
   justify-content: center;
   align-items: center;
 }
@@ -27,7 +27,6 @@
 }
 
 .calculator__buttons{
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
