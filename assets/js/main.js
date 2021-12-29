@@ -101,3 +101,6 @@ const removeLast = () => {
 buttonClear.addEventListener("click", clear);
 buttonDelete.addEventListener("click", removeLast);
 buttonEqual.addEventListener("click", resolve);
+buttonDot.addEventListener("click", () => {
+  numberPulsed(".");
+});
