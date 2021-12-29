@@ -4,61 +4,72 @@ const display = document.querySelector(".input__actual");
 const previous = document.querySelector(".input__previous");
 const buttonClear = document.querySelector("#btn-clear");
 const buttonDelete = document.querySelector("#btn-delete");
+const buttonEqual = document.querySelector("#btn-equal");
+const buttonDot = document.querySelector("#btn-dot");
 
 let currentNumber = "";
 let previousNumber = "";
 
 const updateDisplay = () => {
-  if (currentNumber) {
-    display.innerHTML = currentNumber;
-  } else {
-    display.innerHTML = "0";
-  }
+  display.innerHTML = currentNumber;
 };
 
 const updatePrevious = () => {
-  previous.innerHTML = previousNumber;
+  previous.innerHTML = `${previousNumber} ${calculator._operator} `;
 };
 
 const numberPulsed = (number) => {
-  currentNumber += number;
+  currentNumber == "0" ? (currentNumber = number) : (currentNumber += number);
   calculator._currentNumber = Number(currentNumber);
   updateDisplay();
 };
 
 const resolve = () => {
-  switch (calculator._operator) {
-    case "+":
-      calculator.add();
-      break;
-    case "-":
-      calculator.substraction();
-      break;
-    case "*":
-      calculator.multiply();
-      break;
-    case "/":
-      calculator.division();
-      break;
-  }
+  if (calculator._operator == "" || currentNumber == "") return;
+  if (calculator._operator == "/" && currentNumber == "0") {
+    alert("cant divide by zero");
+    return false;
+  } else {
+    switch (calculator._operator) {
+      case "+":
+        calculator.add();
+        break;
+      case "-":
+        calculator.substraction();
+        break;
+      case "*":
+        calculator.multiply();
+        break;
+      case "/":
+        calculator.division();
+        break;
+    }
 
-  currentNumber = calculator._result;
-  updateDisplay();
+    currentNumber = parseFloat(String(calculator._result.toFixed(2)));
+    previousNumber = "";
+    calculator._operator = "";
+    updateDisplay();
+    updatePrevious();
+    return true;
+  }
 };
 
 const operatorPulsed = (operator) => {
+  let canResolve = true;
+
   if (currentNumber == "") return;
 
   if (previousNumber !== "") {
-    resolve();
+    canResolve = resolve();
   }
-  calculator._operator = operator;
-  previousNumber = currentNumber;
-  calculator._previousNumber = Number(previousNumber);
-  currentNumber = "";
-  calculator._currentNumber = 0;
-  updatePrevious();
-  console.log(calculator);
+
+  if (canResolve) {
+    calculator._operator = operator;
+    previousNumber = currentNumber;
+    calculator._previousNumber = Number(previousNumber);
+    currentNumber = "";
+    updatePrevious();
+  }
 };
 
 const getInput = (value) => {
@@ -73,7 +84,8 @@ buttons.addEventListener("click", (e) => {
 
 const clear = () => {
   previousNumber = "";
-  currentNumber = "";
+  currentNumber = "0";
+  calculator._operator = "";
   updateDisplay();
   updatePrevious();
 };
@@ -81,9 +93,11 @@ const clear = () => {
 const removeLast = () => {
   if (currentNumber) {
     currentNumber = currentNumber.slice(0, -1);
+    calculator._currentNumber = Number(currentNumber);
   }
   updateDisplay();
 };
 
 buttonClear.addEventListener("click", clear);
 buttonDelete.addEventListener("click", removeLast);
+buttonEqual.addEventListener("click", resolve);
